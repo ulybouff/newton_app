@@ -12,6 +12,17 @@ class NewtonSolver:
         self.n = n
         self.L = L
 
+    def assign_parameters(self, l, I0, S, N, a, d, D, n, L):
+        self.l = l
+        self.I0 = I0
+        self.S = S
+        self.N = N
+        self.a = a
+        self.d = d
+        self.D = D
+        self.n = n
+        self.L = L
+
     def calculate(self, y_array):
         l_eff = self.l / self.n
         
@@ -27,9 +38,4 @@ class NewtonSolver:
 
         I = self.I0 * I_diff * ((1 - V) + V * I_inter)
 
-        return {
-            'I_diff': I_diff,
-            'I_inter': I_inter,
-            'V': V,
-            'I': I
-        }
+        return I_diff, I_inter, V, I
